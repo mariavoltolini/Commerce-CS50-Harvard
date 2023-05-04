@@ -1,0 +1,70 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="col-12 box-add">
+    <div class="col-12 align-center title-add">
+        <h2>Create Listing</h2>
+    </div>
+    <form method="post" action="{% url 'submitAdd' %}">
+        {% csrf_token %}
+        <div class="col-12">
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <label style="font-size:18px">Title:</label>
+                </div>
+                <div class="col-10 align-center">
+                    <input autofocus class="form-control" type="text"
+                        name="title" placeholder="Title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <label style="font-size:18px">Description:</label>
+                </div>
+                <div class="col-10 align-center">
+                    <textarea autofocus class="form-control height-description"
+                        type="text"
+                        name="description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <label style="font-size:18px">Image (URL):</label>
+                </div>
+                <div class="col-10 align-center">
+                    <input autofocus class="form-control" type="text"
+                        name="image" placeholder="URL">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <label style="font-size:18px">Price:</label>
+                </div>
+                <div class="col-10 align-center">
+                    <input autofocus class="form-control" type="number"
+                        name="price" placeholder="U$">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <label style="font-size:18px">Category:</label>
+                </div>
+                <div class="col-10 align-center">
+                    <select autofocus class="form-control"
+                        name="category" placeholder="U$">
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 div-button-add">
+                <input class="btn btn-primary" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer"></div>
+
+
+{% endblock %}

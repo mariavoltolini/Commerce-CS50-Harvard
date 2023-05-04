@@ -1,0 +1,128 @@
+.icon-bag {
+    padding: 0 1%;
+    font-size: 40px !important;
+}
+
+.div-top {
+    background-color: #4000ff; 
+    color:white; 
+    padding: 1.5%;
+    margin: 0;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.box-login {
+    background-color: #e6e6e6;
+    padding: 3%;
+    border-radius: 1%;
+}
+
+.align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    height: 100vh;
+}
+
+.box-center {
+    height: 83vh;
+}
+
+.box-footer {
+    background-color: #4000ff;
+    height: 5vh;
+}
+
+.box-title-login {
+    padding-bottom: 2%;
+}
+
+.div-botton-login {
+    padding-bottom: 4%;
+}
+
+.nav-link {
+    color:white;
+}
+
+.title-add {
+    padding: 1% 0;
+}
+
+.box-add {
+    background-color: #e6e6e6;
+    height: 83vh;
+}
+
+.margin-add {
+    margin: 1.5% 0;
+}
+
+.height-description {
+    height: 18vh !important;
+}
+
+.div-button-add {
+    display: flex;
+    justify-content: end;
+    padding: 0;
+}
+
+.box-listing {
+    background-color: #e6e6e6;
+    margin: 1%;
+    border-radius: 1%;
+}
+
+.image {
+    width: 100%;
+}
+
+.div-info {
+    margin: 1% 1% 2% 1%;
+}
+
+.p-add {
+    margin: 0;
+}
+
+.padding-zero {
+    padding: 0;
+}
+
+.margin-1 {
+    margin: 1vh;
+}
+
+.margin-10 {
+    margin-top: 10vh;
+}
+
+.comment-text {
+    width: 80%; 
+    height: 40%;
+}
+
+.box-comment {
+    padding-top: 2% !important;
+}
+
+.box-commentary {
+    background-color: white;
+    border-radius: 2%;
+    padding: 2%;
+    margin: 1% 3%;
+}

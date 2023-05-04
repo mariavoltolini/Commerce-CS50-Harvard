@@ -1,0 +1,62 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="col-12 box-add align-center">
+    <form method="post" action="{% url 'addBid' id=listing.id %}">
+        {% csrf_token %}
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 flex-end">
+                    <img style="width: 60%;" alt="{{ listing.title }}" src="{{ listing.image }}"/>
+                </div>
+                <div class="col-6 margin-10">
+                    <h2>{{ listing.title }}</h2>
+                    <p class="p-add mt-2"><strong>Description:</strong>{{ listing.description }}</p>
+                    <p class="p-add mt-2"><strong>Owner:</strong> {{ listing.user }}</p>
+                    <p class="p-add mt-2"><strong>Minimum Price:</strong> U${{ listing.price }}</p>
+                    {% if user.is_authenticated %}
+                    <div class="col-4 mt-2 mb-3 row" style="padding: 0;">
+                        <div class="col-10">
+                            <input class="form-control" type="number" name="bid" placeholder="Add Bid">
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" class="btn btn-primary" style="color: white;"><i class="fa fa-gavel"></i></button>
+                        </div>
+                    </div>
+                    <p style="color:red">{{ message }}</p>
+                    {% endif %}
+                    {% if watchlist and listing.status == True %}
+                        <a href="{% url 'watchlistRemove' id=listing.id %}" class="mt-3 btn btn-warning">Remove Watchlist</a>
+                        <a href="{% url 'addComment' id=listing.id %}" class="mt-3 btn btn-light">Add Comment</a>
+                        {% if user == listing.user %}
+                            <a href="{% url 'closeListing' id=listing.id %}" class="mt-3 btn btn-danger">Close Listing</a>
+                        {% endif %}
+                    {% elif user.is_authenticated and listing.status == True  %}
+                        <a href="{% url 'watchlistAdd' id=listing.id %}" class="mt-3 btn btn-info">Add Watchlist</a>
+                        <a href="{% url 'addComment' id=listing.id %}" class="mt-3 btn btn-light">Add Comment</a>
+                        {% if user == listing.user %}
+                            <a href="{% url 'closeListing' id=listing.id %}" class="mt-3 btn btn-danger">Close Listing</a>
+                        {% endif %}
+                    {% elif user.is_authenticated and listing.status == False  %}
+                        <p style="color: red;">Listing closed!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-12 box-add ">
+    <div class="align-center box-comment">
+        <h1>Comments:</h1>
+    </div>
+    {% for item in comments %}
+    <div class="box-commentary">
+        <h5>By {{ item.user }} :</h5>
+        <h6>{{ item.message }}</h6>
+
+    </div>
+
+    {% endfor %}
+</div>
+<!-- <div class="box-footer"></div> -->
+{% endblock %}

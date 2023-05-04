@@ -1,0 +1,43 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div class="col-12">
+    <form method="get" action="{% url 'filter' %}">
+        {% csrf_token %}
+        <div class="col-12 padding-zero">
+            <div class="row">
+                <div class="col-2 align-center margin-add">
+                    <select autofocus class="form-control"
+                        name="category" placeholder="U$">
+                        <option value="">Select a category</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-1 flex-center">
+                    <button type="submit" class="btn btn-primary"><i class="fa
+                            fa-search" style="color: white;"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        {% for item in all %}
+        <div class="col-3 box-listing">
+            <div class="align-center margin-add">
+                <h4>{{ item.title }}</h4>
+            </div>
+            <img class="image" alt="{{ item.title }}" src="{{ item.image }}"/>
+            <div class="div-info">
+                <p class="p-add"><strong>Description:</strong>{{ item.description }}</p>
+                <p class="p-add"><strong>Price:</strong> U${{ item.price }}</p>
+                <div class="row align-center">
+                    <a href="{% url 'listing' id=item.id %}" class="btn btn-light margin-1">View Listing</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
